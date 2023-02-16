@@ -13,7 +13,7 @@ class CControllerBPMN {
     val process: CProcess? = null
 
     @GetMapping
-    fun getCProcess(): CProcess? {
+    fun parseBPMN(): CProcess? {
         return process
     }
 }

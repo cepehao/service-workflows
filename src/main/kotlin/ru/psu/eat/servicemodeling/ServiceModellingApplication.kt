@@ -1,4 +1,4 @@
-package ru.psu.eat.servicemodelling
+package ru.psu.eat.servicemodeling
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

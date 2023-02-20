@@ -1,28 +1,31 @@
-package ru.psu.eat.servicemodelling.model
+package ru.psu.eat.servicemodeling.model
 
 import java.util.UUID
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
 
 //весь процесс
 @Entity
 @Table(name = "processes")
-class CProcess(_name: String, _id: UUID) {
-    @Id
-    val id = _id
+class CProcess(
     @Column
-    val name = _name
+    var name: String,
+
+    @Id
+    var id: UUID
+)
+{
+
 
     // todo посмотреть в документации hibernate как сохранять мапы в бд
-    var tasks = mutableMapOf<String, CTask>()
+    @OneToMany(cascade = [(CascadeType.ALL)], fetch = FetchType.LAZY, mappedBy = "process")
+    var tasks = mutableListOf<CTask>()
+
     var events = mutableMapOf<String, CEvent>()
     var gateways = mutableMapOf<String, CGateway>()
 
 
     fun addTask(id: String, task: CTask) {
-        tasks[id] = task
+        tasks.add(task)
     }
 
     fun addGateway(id: String, gateway: CGateway) {

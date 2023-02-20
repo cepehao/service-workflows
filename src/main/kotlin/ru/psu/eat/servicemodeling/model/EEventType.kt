@@ -1,4 +1,4 @@
-package ru.psu.eat.servicemodelling.model
+package ru.psu.eat.servicemodeling.model
 
 // типы событий
 enum class EEventType {

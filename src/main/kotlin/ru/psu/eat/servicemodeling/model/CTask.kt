@@ -6,11 +6,8 @@ import javax.persistence.*
 @Entity
 @Table(name = "tasks")
 class CTask(
-    name: String,
-    incoming: ArrayList<CProcessItem>,
-    outgoing: ArrayList<CProcessItem>,
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "process_id")
-    val process: CProcess? = null
-) : CProcessItem(name, incoming, outgoing)
+    id: String = "",
+    name: String = "",
+    incomingIdList: ArrayList<String> = arrayListOf<String>(),
+    outgoingIdList: ArrayList<String> = arrayListOf<String>()
+) : CProcessItem(id, name, incomingIdList, outgoingIdList)

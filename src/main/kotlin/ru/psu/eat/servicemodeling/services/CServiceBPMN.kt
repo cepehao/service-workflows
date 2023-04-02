@@ -2,6 +2,7 @@ package ru.psu.eat.servicemodeling.services
 
 import org.springframework.stereotype.Service
 import org.w3c.dom.Node
+import org.w3c.dom.NodeList
 import ru.psu.eat.servicemodeling.model.*
 import java.io.File
 import java.util.UUID
@@ -11,128 +12,235 @@ import javax.xml.parsers.DocumentBuilderFactory
 @Service
 class CServiceBPMN : IServiceBPMN
 {
-    fun getEvent(curNode: Node, eventType: EEventType): CEvent {
+    // собираем элемент процесса - событие, связи пока храним строковыми идентификаторами
+    fun createEvent(id: String, curNode: Node, eventType: EEventType): CEvent {
         val nodeList = curNode.childNodes
+        var node: Node
 
-        val incoming = arrayListOf<CProcessItem>()
-        val outgoing = arrayListOf<CProcessItem>()
+        val incomingIdList = arrayListOf<String>()
+        val outgoingIdList = arrayListOf<String>()
 
-        for (i:Int in 0 until nodeList.length) {
-            if (nodeList.item(i).nodeType != Node.ELEMENT_NODE) continue
+        for (i:Int in 0..nodeList.length - 1) {
+            node = nodeList.item(i)
 
-            if (nodeList.item(i).nodeName == "semantic:incoming") {
-                //TODO Забирать объекты из карты
-                //incoming.add(CIncoming(nodeList.item(i).textContent.substring(3)))
+            if (node.nodeType != Node.ELEMENT_NODE) continue
+
+            if (node.nodeName == "semantic:incoming") {
+                incomingIdList.add(node.textContent.substring(3))
             }
 
-            if (nodeList.item(i).nodeName == "semantic:outgoing") {
-                //TODO Забирать объекты из карты
-                //outgoing.add(COutgoing(nodeList.item(i).textContent.substring(3)))
+            if (node.nodeName == "semantic:outgoing") {
+                outgoingIdList.add(node.textContent.substring(3))
             }
         }
 
-        return CEvent(curNode.attributes.getNamedItem("name").nodeValue, incoming, outgoing, eventType)
+        return CEvent(id, curNode.attributes.getNamedItem("name").nodeValue, incomingIdList, outgoingIdList, eventType)
     }
 
-    fun getGateway(curNode: Node, gatewayType: EGatewayType): CGateway { // todo правило выбора
+    fun createGateway(id: String, curNode: Node, gatewayType: EGatewayType): CGateway { // todo правило выбора
         val nodeList = curNode.childNodes
+        var node: Node
 
-        val incoming = arrayListOf<CProcessItem>()
-        val outgoing = arrayListOf<CProcessItem>()
+        val incomingIdList = arrayListOf<String>()
+        val outgoingIdList = arrayListOf<String>()
 
-        for (i:Int in 0 until nodeList.length) {
-            if (nodeList.item(i).nodeType != Node.ELEMENT_NODE) continue
+        for (i:Int in 0..nodeList.length - 1) {
+            node = nodeList.item(i)
 
-            if (nodeList.item(i).nodeName == "semantic:incoming") {
-                //TODO Забирать объекты из карты
-                //incoming.add(CIncoming(nodeList.item(i).textContent.substring(3)))
+            if (node.nodeType != Node.ELEMENT_NODE) continue
+
+            if (node.nodeName == "semantic:incoming") {
+                incomingIdList.add(node.textContent.substring(3))
             }
 
-            if (nodeList.item(i).nodeName == "semantic:outgoing") {
-                //TODO Забирать объекты из карты
-                //outgoing.add(COutgoing(nodeList.item(i).textContent.substring(3)))
+            if (node.nodeName == "semantic:outgoing") {
+                outgoingIdList.add(node.textContent.substring(3))
             }
         }
 
-        return CGateway(curNode.attributes.getNamedItem("name").nodeValue, incoming, outgoing, gatewayType)
+        return CGateway(id, curNode.attributes.getNamedItem("name").nodeValue, incomingIdList, outgoingIdList, gatewayType)
     }
 
-    fun getTask(curNode: Node, process: CProcess): CTask {
+    fun createTask(id: String, curNode: Node): CTask {
         val nodeList = curNode.childNodes
+        var node: Node
 
-        val incoming = arrayListOf<CProcessItem>()
-        val outgoing = arrayListOf<CProcessItem>()
+        val incomingIdList = arrayListOf<String>()
+        val outgoingIdList = arrayListOf<String>()
 
-        for (i:Int in 0 until nodeList.length) {
-            if (nodeList.item(i).nodeType != Node.ELEMENT_NODE) continue
 
-            if (nodeList.item(i).nodeName == "semantic:incoming") {
-                //TODO Забирать объекты из карты
-                //incoming.add(CIncoming(nodeList.item(i).textContent.substring(3)))
+        for (i:Int in 0..nodeList.length - 1) {
+            node = nodeList.item(i)
+
+            if (node.nodeType != Node.ELEMENT_NODE) continue
+
+            if (node.nodeName == "semantic:incoming") {
+                incomingIdList.add(node.textContent.substring(3))
             }
 
-            if (nodeList.item(i).nodeName == "semantic:outgoing") {
-                //TODO Забирать объекты из карты
-                //outgoing.add(COutgoing(nodeList.item(i).textContent.substring(3)))
+            if (node.nodeName == "semantic:outgoing") {
+                outgoingIdList.add(node.textContent.substring(3))
             }
         }
 
-        return CTask(curNode.attributes.getNamedItem("name").nodeValue, incoming, outgoing, process)
+        return CTask(id, curNode.attributes.getNamedItem("name").nodeValue, incomingIdList, outgoingIdList)
     }
 
-    override fun parseBPMN(): CProcess? {
-        val uuid = UUID.randomUUID()
-        val file = File("C:\\Users\\cepeh\\OneDrive\\Рабочий стол\\sel.bpmn")
+    // создаем карту всех процессов, вместе со строковыми идентификаторами связей, без ссылок на другие элементы процесса
+    fun getProcessObjectsMap(nodeList: NodeList, curProcess: CProcess): MutableMap<String, CProcessItem> {
+        var node: Node
+        var id: String
+        val processObjectsMap = mutableMapOf<String, CProcessItem>()
 
+        for (i:Int in 0..nodeList.length - 1) {
+            node = nodeList.item(i)
+
+            if (node.nodeType != Node.ELEMENT_NODE) continue
+
+            id = node.attributes.getNamedItem("id").nodeValue.substring(3)
+
+            when(node.nodeName) {
+                "semantic:startEvent" -> {
+                    processObjectsMap.put(id, createEvent(id, node, EEventType.START))
+                }
+
+                "semantic:task" -> {
+                    processObjectsMap.put(id, createTask(id, node))
+                }
+
+                "semantic:endEvent" -> {
+                    processObjectsMap.put(id, createEvent(id, node, EEventType.END))
+                }
+
+                "semantic:intermediateCatchEvent" -> {
+                    processObjectsMap.put(id, createEvent(id, node, EEventType.INTERMEDIATE))
+                }
+
+                "semantic:exclusiveGateway" -> {
+                    processObjectsMap.put(id, createGateway(id, node, EGatewayType.EXCLUSIVE))
+                }
+            }
+            processObjectsMap[id]?.process = curProcess
+        }
+
+        return processObjectsMap
+    }
+
+    //проверить список строковых идентификаторов на входы/выходы в другие элементы процесса, вернуть список элементов процесса
+    fun createIncomingItemList (items: MutableMap<String, CProcessItem>, incomingIdList: ArrayList<String>): MutableSet<CProcessItem> {
+        val incomingList = mutableSetOf<CProcessItem>()
+
+        for (id in incomingIdList) {
+            for (item in items.values) {
+                if (item.checkOutgoing(id)) incomingList.add(item)
+            }
+        }
+
+        return incomingList
+    }
+
+    fun createOutgoingItemList (items: MutableMap<String, CProcessItem>, outgoingIdList: ArrayList<String>): MutableSet<CProcessItem> {
+        val outgoingList = mutableSetOf<CProcessItem>()
+
+        for (id in outgoingIdList) {
+            for (item in items.values) {
+                if (item.checkIncoming(id)) outgoingList.add(item)
+            }
+        }
+
+        return outgoingList
+    }
+
+    // добавляем в карту элементов процесса связи ссылками на объекты
+    fun addConnections(items: MutableMap<String, CProcessItem>) {
+
+        var incomingIdList: ArrayList<String>
+        var outgoingIdList: ArrayList<String>
+        var incomingItemSet = mutableSetOf<CProcessItem>()
+        var outgoingItemSet = mutableSetOf<CProcessItem>()
+
+        for (item in items.values) {
+            incomingIdList = item.getIncomingIdList() // получили список строковых идентификаторов
+            outgoingIdList = item.getOutgoingIdList() // связей из i-ого объекта
+
+            incomingItemSet = createIncomingItemList(items, incomingIdList) // теперь определим на какие именно
+            outgoingItemSet = createOutgoingItemList(items, outgoingIdList) // элементы процесса связывают эти идентификаторы
+
+            item.incomingItemSet = incomingItemSet
+            item.outgoingItemSet = outgoingItemSet
+        }
+
+    }
+
+    // собираем из карты элементов процесса итоговый процесс целиком
+    fun makeProcess(process: CProcess, processItemMap: MutableMap<String, CProcessItem>) {
+        for (entry in processItemMap.entries.iterator()) {
+            when (entry.value) {
+                is CEvent -> process.addEvent(entry.key, entry.value as CEvent)
+
+                is CTask -> process.addTask(entry.key, entry.value as CTask)
+
+                is CGateway -> process.addGateway(entry.key, entry.value as CGateway)
+            }
+        }
+    }
+
+    override fun parseBPMN(id: UUID): CProcess { // todo принимать файл из postman, а не локально | MultipartFile -> File
         var process: CProcess? = null
+
+        val fileBPMN = File("C:\\Users\\cepeh\\OneDrive\\Рабочий стол\\sel.bpmn")
 
         try {
             val dbf = DocumentBuilderFactory.newInstance()
-            val doc = dbf.newDocumentBuilder().parse(file)
+            val doc = dbf.newDocumentBuilder().parse(fileBPMN)
 
             val processNode = doc.getElementsByTagName("semantic:process").item(0)
 
-            process = CProcess(processNode.attributes.getNamedItem("name").nodeValue, uuid)
+            process = CProcess(id, processNode.attributes.getNamedItem("name").nodeValue)
 
             val processChildList = processNode.childNodes
-            var processChild: Node
 
-            for (i:Int in 0 until processChildList.length) {
-                processChild = processChildList.item(i)
+            val processItemMap = getProcessObjectsMap(processChildList, process)
 
-                if (processChild == null || processChild.nodeType != Node.ELEMENT_NODE) continue
+            addConnections(processItemMap)
 
-                when(processChild.nodeName) {
-                    "semantic:startEvent" -> {
-                        process.addEvent(processChild.attributes.getNamedItem("id").nodeValue.substring(3),
-                            getEvent(processChild, EEventType.START))
-                    }
+            makeProcess(process, processItemMap)
 
-                    "semantic:task" -> {
-                        process.addTask(processChild.attributes.getNamedItem("id").nodeValue.substring(3),
-                            getTask(processChild, process))
-                    }
-
-                    "semantic:endEvent" -> {
-                        process.addEvent(processChild.attributes.getNamedItem("id").nodeValue.substring(3),
-                            getEvent(processChild, EEventType.END))
-                    }
-
-                    "semantic:intermediateCatchEvent" -> {
-                        process.addEvent(processChild.attributes.getNamedItem("id").nodeValue.substring(3),
-                            getEvent(processChild, EEventType.INTERMEDIATE))
-                    }
-
-                    "semantic:exclusiveGateway" -> {
-                        process.addGateway(processChild.attributes.getNamedItem("id").nodeValue.substring(3),
-                            getGateway(processChild, EGatewayType.EXCLUSIVE))
-                    }
-                }
-            }
         }catch(e: Exception) {
             println("Error: " + e.message)
         }
 
-        return process
+        return process!!
     }
+
+
+    override fun parseBPMN(id: UUID, fileBPMN: File): CProcess {
+        var process: CProcess? = null
+
+        try {
+            val dbf = DocumentBuilderFactory.newInstance()
+            val doc = dbf.newDocumentBuilder().parse(fileBPMN)
+
+            val processNode = doc.getElementsByTagName("semantic:process").item(0)
+
+            process = CProcess(id, processNode.attributes.getNamedItem("name").nodeValue)
+
+            val processChildList = processNode.childNodes
+
+            val processItemMap = getProcessObjectsMap(processChildList, process)
+
+            addConnections(processItemMap)
+
+            makeProcess(process, processItemMap)
+
+        }catch(e: Exception) {
+            println("Error: " + e.message)
+        }
+
+        return process!!
+    }
+
+
+
+
 }

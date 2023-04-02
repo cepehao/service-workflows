@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost/workflow
+    username: workflow
+    password: workflow
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true

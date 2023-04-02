@@ -1,5 +1,6 @@
 package ru.psu.eat.servicemodeling.model
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import java.util.UUID
 import javax.persistence.*
 
@@ -7,25 +8,30 @@ import javax.persistence.*
 @Entity
 @Table(name = "processes")
 class CProcess(
-    @Column
-    var name: String,
 
     @Id
-    var id: UUID
+    var id: UUID? = null,
+
+    @Column
+    var name: String = ""
+
 )
 {
+    @JsonIgnore
+    @OneToMany(mappedBy = "process", cascade = [CascadeType.ALL], orphanRemoval = true, fetch = FetchType.LAZY)
+    var tasks = mutableMapOf<String, CTask>()
 
-
-    // todo посмотреть в документации hibernate как сохранять мапы в бд
-    @OneToMany(cascade = [(CascadeType.ALL)], fetch = FetchType.LAZY, mappedBy = "process")
-    var tasks = mutableListOf<CTask>()
-
+    @JsonIgnore
+    @OneToMany(mappedBy = "process", cascade = [CascadeType.ALL], orphanRemoval = true, fetch = FetchType.LAZY)
     var events = mutableMapOf<String, CEvent>()
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "process", cascade = [CascadeType.ALL], orphanRemoval = true, fetch = FetchType.LAZY)
     var gateways = mutableMapOf<String, CGateway>()
 
-
+    
     fun addTask(id: String, task: CTask) {
-        tasks.add(task)
+        tasks[id] = task
     }
 
     fun addGateway(id: String, gateway: CGateway) {

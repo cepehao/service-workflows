@@ -1,9 +1,9 @@
-package ru.psu.eat.servicemodeling.services
+package ru.psu.workflow.serviceworkflows.services
 
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
-import ru.psu.eat.servicemodeling.model.CProcess
-import ru.psu.eat.servicemodeling.repositories.IRepositoryProcesses
+import ru.psu.workflow.serviceworkflows.model.CProcess
+import ru.psu.workflow.serviceworkflows.repositories.IRepositoryProcesses
 import java.util.*
 
 @Service

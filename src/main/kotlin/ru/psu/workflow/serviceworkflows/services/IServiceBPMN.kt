@@ -1,6 +1,6 @@
-package ru.psu.eat.servicemodeling.services
+package ru.psu.workflow.serviceworkflows.services
 
-import ru.psu.eat.servicemodeling.model.CProcess
+import ru.psu.workflow.serviceworkflows.model.CProcess
 import java.io.File
 import java.util.UUID
 

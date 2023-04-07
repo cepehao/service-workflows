@@ -1,10 +1,10 @@
-package ru.psu.eat.servicemodeling.controllers
+package ru.psu.workflow.serviceworkflows.controllers
 
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import ru.psu.eat.servicemodeling.model.CProcess
-import ru.psu.eat.servicemodeling.services.IServiceBPMN
-import ru.psu.eat.servicemodeling.services.IServiceProcesses
+import ru.psu.workflow.serviceworkflows.model.CProcess
+import ru.psu.workflow.serviceworkflows.services.IServiceBPMN
+import ru.psu.workflow.serviceworkflows.services.IServiceProcesses
 import java.io.File
 import java.util.UUID
 

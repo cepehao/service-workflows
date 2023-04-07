@@ -1,7 +1,7 @@
-package ru.psu.eat.servicemodeling.services
+package ru.psu.workflow.serviceworkflows.services
 
 import org.springframework.http.ResponseEntity
-import ru.psu.eat.servicemodeling.model.CProcess
+import ru.psu.workflow.serviceworkflows.model.CProcess
 import java.util.*
 
 interface IServiceProcesses {

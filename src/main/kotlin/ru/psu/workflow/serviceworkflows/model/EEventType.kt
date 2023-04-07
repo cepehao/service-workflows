@@ -1,4 +1,4 @@
-package ru.psu.eat.servicemodeling.model
+package ru.psu.workflow.serviceworkflows.model
 
 // типы событий
 enum class EEventType {

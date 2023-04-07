@@ -1,4 +1,4 @@
-package ru.psu.eat.servicemodeling
+package ru.psu.workflow.serviceworkflows
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

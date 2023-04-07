@@ -1,11 +1,11 @@
-package ru.psu.eat.servicemodeling.model
+package ru.psu.workflow.serviceworkflows.model
 
 import javax.persistence.*
 
-// логическое правило
+// событие
 @Entity
-@Table(name = "gateways")
-class CGateway (
+@Table(name = "events")
+class CEvent  (
     id: String = "",
     name: String = "",
     incomingIdList: ArrayList<String> = arrayListOf<String>(),
@@ -13,5 +13,5 @@ class CGateway (
 
     @Enumerated(EnumType.STRING)
     @Column(name = "type")
-    val gatewayType: EGatewayType? = null
+    val eventType: EEventType? = null
 ) : CProcessItem(id, name, incomingIdList, outgoingIdList)

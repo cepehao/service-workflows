@@ -1,1 +1,1 @@
-rootProject.name = "service-modeling"
+rootProject.name = "service-workflows"

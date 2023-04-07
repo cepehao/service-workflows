@@ -1,7 +1,7 @@
-package ru.psu.eat.servicemodeling.repositories
+package ru.psu.workflow.serviceworkflows.repositories
 
 import org.springframework.stereotype.Repository
-import ru.psu.eat.servicemodeling.model.CProcess
+import ru.psu.workflow.serviceworkflows.model.CProcess
 import org.springframework.data.repository.CrudRepository
 import java.util.*
 

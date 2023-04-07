@@ -1,4 +1,4 @@
-package ru.psu.eat.servicemodeling.model
+package ru.psu.workflow.serviceworkflows.model
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import java.util.UUID

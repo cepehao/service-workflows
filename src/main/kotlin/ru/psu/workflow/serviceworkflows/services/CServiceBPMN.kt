@@ -1,9 +1,9 @@
-package ru.psu.eat.servicemodeling.services
+package ru.psu.workflow.serviceworkflows.services
 
 import org.springframework.stereotype.Service
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
-import ru.psu.eat.servicemodeling.model.*
+import ru.psu.workflow.serviceworkflows.model.*
 import java.io.File
 import java.util.UUID
 import javax.xml.parsers.DocumentBuilderFactory
@@ -20,7 +20,7 @@ class CServiceBPMN : IServiceBPMN
         val incomingIdList = arrayListOf<String>()
         val outgoingIdList = arrayListOf<String>()
 
-        for (i:Int in 0..nodeList.length - 1) {
+        for (i:Int in 0 until nodeList.length) {
             node = nodeList.item(i)
 
             if (node.nodeType != Node.ELEMENT_NODE) continue
@@ -44,7 +44,7 @@ class CServiceBPMN : IServiceBPMN
         val incomingIdList = arrayListOf<String>()
         val outgoingIdList = arrayListOf<String>()
 
-        for (i:Int in 0..nodeList.length - 1) {
+        for (i:Int in 0 until nodeList.length) {
             node = nodeList.item(i)
 
             if (node.nodeType != Node.ELEMENT_NODE) continue
@@ -69,7 +69,7 @@ class CServiceBPMN : IServiceBPMN
         val outgoingIdList = arrayListOf<String>()
 
 
-        for (i:Int in 0..nodeList.length - 1) {
+        for (i:Int in 0 until nodeList.length) {
             node = nodeList.item(i)
 
             if (node.nodeType != Node.ELEMENT_NODE) continue
@@ -92,7 +92,7 @@ class CServiceBPMN : IServiceBPMN
         var id: String
         val processObjectsMap = mutableMapOf<String, CProcessItem>()
 
-        for (i:Int in 0..nodeList.length - 1) {
+        for (i:Int in 0 until nodeList.length) {
             node = nodeList.item(i)
 
             if (node.nodeType != Node.ELEMENT_NODE) continue
@@ -101,23 +101,23 @@ class CServiceBPMN : IServiceBPMN
 
             when(node.nodeName) {
                 "semantic:startEvent" -> {
-                    processObjectsMap.put(id, createEvent(id, node, EEventType.START))
+                    processObjectsMap[id] = createEvent(id, node, EEventType.START)
                 }
 
                 "semantic:task" -> {
-                    processObjectsMap.put(id, createTask(id, node))
+                    processObjectsMap[id] = createTask(id, node)
                 }
 
                 "semantic:endEvent" -> {
-                    processObjectsMap.put(id, createEvent(id, node, EEventType.END))
+                    processObjectsMap[id] = createEvent(id, node, EEventType.END)
                 }
 
                 "semantic:intermediateCatchEvent" -> {
-                    processObjectsMap.put(id, createEvent(id, node, EEventType.INTERMEDIATE))
+                    processObjectsMap[id] = createEvent(id, node, EEventType.INTERMEDIATE)
                 }
 
                 "semantic:exclusiveGateway" -> {
-                    processObjectsMap.put(id, createGateway(id, node, EGatewayType.EXCLUSIVE))
+                    processObjectsMap[id] = createGateway(id, node, EGatewayType.EXCLUSIVE)
                 }
             }
             processObjectsMap[id]?.process = curProcess
@@ -127,28 +127,28 @@ class CServiceBPMN : IServiceBPMN
     }
 
     //проверить список строковых идентификаторов на входы/выходы в другие элементы процесса, вернуть список элементов процесса
-    fun createIncomingItemList (items: MutableMap<String, CProcessItem>, incomingIdList: ArrayList<String>): MutableSet<CProcessItem> {
-        val incomingList = mutableSetOf<CProcessItem>()
-
+    fun createIncomingItemList (
+        items: Map<String, CProcessItem>,
+        incomingIdList: List<String>,
+        incomingList : MutableList<CProcessItem>
+    ) {
         for (id in incomingIdList) {
             for (item in items.values) {
                 if (item.checkOutgoing(id)) incomingList.add(item)
             }
         }
-
-        return incomingList
     }
 
-    fun createOutgoingItemList (items: MutableMap<String, CProcessItem>, outgoingIdList: ArrayList<String>): MutableSet<CProcessItem> {
-        val outgoingList = mutableSetOf<CProcessItem>()
-
+    fun createOutgoingItemList (
+        items: Map<String, CProcessItem>,
+        outgoingIdList: List<String>,
+        outgoingList: MutableList<CProcessItem>
+    ) {
         for (id in outgoingIdList) {
             for (item in items.values) {
                 if (item.checkIncoming(id)) outgoingList.add(item)
             }
         }
-
-        return outgoingList
     }
 
     // добавляем в карту элементов процесса связи ссылками на объекты
@@ -156,18 +156,13 @@ class CServiceBPMN : IServiceBPMN
 
         var incomingIdList: ArrayList<String>
         var outgoingIdList: ArrayList<String>
-        var incomingItemSet = mutableSetOf<CProcessItem>()
-        var outgoingItemSet = mutableSetOf<CProcessItem>()
 
         for (item in items.values) {
             incomingIdList = item.getIncomingIdList() // получили список строковых идентификаторов
             outgoingIdList = item.getOutgoingIdList() // связей из i-ого объекта
 
-            incomingItemSet = createIncomingItemList(items, incomingIdList) // теперь определим на какие именно
-            outgoingItemSet = createOutgoingItemList(items, outgoingIdList) // элементы процесса связывают эти идентификаторы
-
-            item.incomingItemSet = incomingItemSet
-            item.outgoingItemSet = outgoingItemSet
+            createIncomingItemList(items, incomingIdList, item.incomingItems) // теперь определим на какие именно
+            createOutgoingItemList(items, outgoingIdList, item.outgoingItems) // элементы процесса связывают эти идентификаторы
         }
 
     }

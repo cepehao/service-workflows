@@ -1,4 +1,4 @@
-package ru.psu.eat.servicemodeling.model
+package ru.psu.workflow.serviceworkflows.model
 
 import javax.persistence.*
 
@@ -23,17 +23,17 @@ open class CProcessItem(
 
 
     // тут будут храниться ссылки на элементы процесса
-    //@ManyToMany(fetch = FetchType.LAZY)
-    //@JoinTable(name = "incoming_outgoing_items",
-    //joinColumns = [JoinColumn(name = "incoming_item")],
-    //inverseJoinColumns = [JoinColumn(name = "outgoing_item")])
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    @JoinTable(name = "process_item_relations",
+//    joinColumns = [JoinColumn(name = "incoming_item")],
+//    inverseJoinColumns = [JoinColumn(name = "outgoing_item")])
     @Transient
-    var incomingItemSet = mutableSetOf<CProcessItem>()
+    var incomingItems : MutableList<CProcessItem> = mutableListOf()
 
 
-    //@ManyToMany(fetch = FetchType.LAZY, mappedBy = "incomingItemSet")
+//    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "incomingItems")
     @Transient
-    var outgoingItemSet = mutableSetOf<CProcessItem>()
+    var outgoingItems : MutableList<CProcessItem> = mutableListOf()
 
 
     fun checkIncoming(id: String): Boolean {

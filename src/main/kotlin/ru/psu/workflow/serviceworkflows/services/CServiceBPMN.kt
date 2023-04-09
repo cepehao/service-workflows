@@ -1,6 +1,7 @@
 package ru.psu.workflow.serviceworkflows.services
 
 import org.springframework.stereotype.Service
+import org.springframework.web.multipart.MultipartFile
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
 import ru.psu.workflow.serviceworkflows.model.*
@@ -209,12 +210,12 @@ class CServiceBPMN : IServiceBPMN
     }
 
 
-    override fun parseBPMN(id: UUID, fileBPMN: File): CProcess {
+    override fun parseBPMN(id: UUID?, fileBPMN: MultipartFile): CProcess {
         var process: CProcess? = null
 
         try {
             val dbf = DocumentBuilderFactory.newInstance()
-            val doc = dbf.newDocumentBuilder().parse(fileBPMN)
+            val doc = dbf.newDocumentBuilder().parse(fileBPMN.inputStream)
 
             val processNode = doc.getElementsByTagName("semantic:process").item(0)
 

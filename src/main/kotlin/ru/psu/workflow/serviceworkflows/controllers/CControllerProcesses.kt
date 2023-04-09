@@ -2,10 +2,10 @@ package ru.psu.workflow.serviceworkflows.controllers
 
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.multipart.MultipartFile
 import ru.psu.workflow.serviceworkflows.model.CProcess
 import ru.psu.workflow.serviceworkflows.services.IServiceBPMN
 import ru.psu.workflow.serviceworkflows.services.IServiceProcesses
-import java.io.File
 import java.util.UUID
 
 @RestController
@@ -22,8 +22,12 @@ class CControllerProcesses
         return serviceProcesses.save(serviceBPMN.parseBPMN(id))
     }
 
-    @PostMapping("/upload_bpmn_with_body", params = ["id"])
-    fun uploadBPMN(@RequestParam id: UUID, @RequestBody fileBPMN: File): CProcess {
+    @PostMapping("/upload_bpmn_with_body")
+    fun uploadBPMN(
+        @RequestParam(required  = false) id: UUID?,
+        @RequestBody fileBPMN: MultipartFile
+    )                                       : CProcess
+    {
         return serviceProcesses.save(serviceBPMN.parseBPMN(id, fileBPMN))
     }
 

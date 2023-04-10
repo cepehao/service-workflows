@@ -29,14 +29,5 @@ class CProcess(
 {
     @JsonIgnore
     @OneToMany(mappedBy = "process", cascade = [CascadeType.ALL], orphanRemoval = true, fetch = FetchType.LAZY)
-    var tasks = mutableListOf<CTask>()
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "process", cascade = [CascadeType.ALL], orphanRemoval = true, fetch = FetchType.LAZY)
-    var events = mutableListOf<CEvent>()
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "process", cascade = [CascadeType.ALL], orphanRemoval = true, fetch = FetchType.LAZY)
-    var gateways = mutableListOf<CGateway>()
-
+    var processItems = mutableListOf<CProcessItem>()
 }

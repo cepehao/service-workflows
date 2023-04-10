@@ -172,11 +172,11 @@ class CServiceBPMN : IServiceBPMN
     fun makeProcess(process: CProcess, processItemMap: MutableMap<String, CProcessItem>) {
         for (entry in processItemMap.entries.iterator()) {
             when (entry.value) {
-                is CEvent -> process.events.add(entry.value as CEvent)
+                is CEvent -> process.processItems.add(entry.value as CEvent)
 
-                is CTask -> process.tasks.add(entry.value as CTask)
+                is CTask -> process.processItems.add(entry.value as CTask)
 
-                is CGateway -> process.gateways.add(entry.value as CGateway)
+                is CGateway -> process.processItems.add(entry.value as CGateway)
             }
         }
     }

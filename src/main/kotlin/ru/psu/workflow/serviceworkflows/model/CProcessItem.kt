@@ -26,20 +26,15 @@ open class CProcessItem(
 
 
     // тут будут храниться ссылки на элементы процесса
-    @ManyToMany(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
-    @JoinTable(
-        name = "incoming_process_items",
-        joinColumns = [JoinColumn(name = "process_item_id")],
-        inverseJoinColumns = [JoinColumn(name = "incoming_process_item_id")]
-    )
+    @Transient
     var incomingItems : MutableList<CProcessItem> = mutableListOf()
 
 
     @ManyToMany(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
     @JoinTable(
-        name = "outgoing_process_items",
-        joinColumns = [JoinColumn(name = "process_item_id")],
-        inverseJoinColumns = [JoinColumn(name = "outgoing_process_item_id")]
+        name = "process_item_relations",
+        joinColumns = [JoinColumn(name = "source_id")],
+        inverseJoinColumns = [JoinColumn(name = "target_id")]
     )
     var outgoingItems: MutableList<CProcessItem> = mutableListOf()
 

@@ -23,6 +23,10 @@ class CServiceProcesses(val repositoryProcesses: IRepositoryProcesses): IService
             .orElse(ResponseEntity.notFound().build())
     }
 
+    override fun deleteAll() {
+        repositoryProcesses.deleteAll()
+    }
+
     override fun deleteById(id: UUID): ResponseEntity<String> {
         return repositoryProcesses.findById(id)
             .map { process->

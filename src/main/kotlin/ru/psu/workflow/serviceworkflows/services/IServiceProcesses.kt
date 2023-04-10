@@ -4,14 +4,16 @@ import org.springframework.http.ResponseEntity
 import ru.psu.workflow.serviceworkflows.model.CProcess
 import java.util.*
 
-interface IServiceProcesses {
+interface IServiceProcesses
+{
     fun save(process: CProcess): CProcess
 
     fun getAll(): Iterable<CProcess>
 
     fun getById(id: UUID): ResponseEntity<CProcess>
 
-    fun deleteById(id: UUID): ResponseEntity<String>
+    fun deleteAll()
 
+    fun deleteById(id: UUID): ResponseEntity<String>
 
 }

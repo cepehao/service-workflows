@@ -172,43 +172,14 @@ class CServiceBPMN : IServiceBPMN
     fun makeProcess(process: CProcess, processItemMap: MutableMap<String, CProcessItem>) {
         for (entry in processItemMap.entries.iterator()) {
             when (entry.value) {
-                is CEvent -> process.addEvent(entry.key, entry.value as CEvent)
+                is CEvent -> process.events.add(entry.value as CEvent)
 
-                is CTask -> process.addTask(entry.key, entry.value as CTask)
+                is CTask -> process.tasks.add(entry.value as CTask)
 
-                is CGateway -> process.addGateway(entry.key, entry.value as CGateway)
+                is CGateway -> process.gateways.add(entry.value as CGateway)
             }
         }
     }
-
-    override fun parseBPMN(id: UUID): CProcess { // todo принимать файл из postman, а не локально | MultipartFile -> File
-        var process: CProcess? = null
-
-        val fileBPMN = File("C:\\Users\\cepeh\\OneDrive\\Рабочий стол\\sel.bpmn")
-
-        try {
-            val dbf = DocumentBuilderFactory.newInstance()
-            val doc = dbf.newDocumentBuilder().parse(fileBPMN)
-
-            val processNode = doc.getElementsByTagName("semantic:process").item(0)
-
-            process = CProcess(id, processNode.attributes.getNamedItem("name").nodeValue)
-
-            val processChildList = processNode.childNodes
-
-            val processItemMap = getProcessObjectsMap(processChildList, process)
-
-            addConnections(processItemMap)
-
-            makeProcess(process, processItemMap)
-
-        }catch(e: Exception) {
-            println("Error: " + e.message)
-        }
-
-        return process!!
-    }
-
 
     override fun parseBPMN(id: UUID?, fileBPMN: MultipartFile): CProcess {
         var process: CProcess? = null
@@ -219,7 +190,11 @@ class CServiceBPMN : IServiceBPMN
 
             val processNode = doc.getElementsByTagName("semantic:process").item(0)
 
-            process = CProcess(id, processNode.attributes.getNamedItem("name").nodeValue)
+            if (id != null) {
+                process = CProcess(id, processNode.attributes.getNamedItem("name").nodeValue)
+            }else {
+                process = CProcess(UUID.randomUUID(), processNode.attributes.getNamedItem("name").nodeValue)
+            }
 
             val processChildList = processNode.childNodes
 

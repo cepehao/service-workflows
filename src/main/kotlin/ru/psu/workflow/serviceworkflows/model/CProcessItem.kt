@@ -1,9 +1,12 @@
 package ru.psu.workflow.serviceworkflows.model
 
+import org.hibernate.annotations.NotFound
+import org.hibernate.annotations.NotFoundAction
 import javax.persistence.*
 
 // класс-родитель элементов процесса
-@MappedSuperclass
+@Entity
+@Table(name = "process_items")
 open class CProcessItem(
     @Id
     val id: String = "",
@@ -23,17 +26,22 @@ open class CProcessItem(
 
 
     // тут будут храниться ссылки на элементы процесса
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    @JoinTable(name = "process_item_relations",
-//    joinColumns = [JoinColumn(name = "incoming_item")],
-//    inverseJoinColumns = [JoinColumn(name = "outgoing_item")])
-    @Transient
+    @ManyToMany(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "incoming_process_items",
+        joinColumns = [JoinColumn(name = "process_item_id")],
+        inverseJoinColumns = [JoinColumn(name = "incoming_process_item_id")]
+    )
     var incomingItems : MutableList<CProcessItem> = mutableListOf()
 
 
-//    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "incomingItems")
-    @Transient
-    var outgoingItems : MutableList<CProcessItem> = mutableListOf()
+    @ManyToMany(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "outgoing_process_items",
+        joinColumns = [JoinColumn(name = "process_item_id")],
+        inverseJoinColumns = [JoinColumn(name = "outgoing_process_item_id")]
+    )
+    var outgoingItems: MutableList<CProcessItem> = mutableListOf()
 
 
     fun checkIncoming(id: String): Boolean {
@@ -51,4 +59,5 @@ open class CProcessItem(
     fun getOutgoingIdList(): ArrayList<String> {
         return outgoingIdList
     }
+
 }

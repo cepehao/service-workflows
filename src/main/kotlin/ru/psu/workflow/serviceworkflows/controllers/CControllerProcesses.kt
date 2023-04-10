@@ -17,33 +17,36 @@ class CControllerProcesses
 )
 {
 
-    @PostMapping("/upload_bpmn", params = ["id"])
-    fun uploadBPMN(@RequestParam id: UUID): CProcess {
-        return serviceProcesses.save(serviceBPMN.parseBPMN(id))
-    }
-
-    @PostMapping("/upload_bpmn_with_body")
+    @PostMapping("/upload_bpmn")
     fun uploadBPMN(
-        @RequestParam(required  = false) id: UUID?,
-        @RequestBody fileBPMN: MultipartFile
-    )                                       : CProcess
+        @RequestParam("id", required = false) id: UUID?,
+        @RequestParam("bpmn") fileBPMN: MultipartFile
+    ): CProcess
     {
         return serviceProcesses.save(serviceBPMN.parseBPMN(id, fileBPMN))
     }
 
-
     @GetMapping
-    fun getAll(): Iterable<CProcess> {
+    fun getAll(): Iterable<CProcess>
+    {
         return serviceProcesses.getAll()
     }
 
     @GetMapping (params = ["id"])
-    fun getById(@RequestParam id: UUID): ResponseEntity<CProcess> {
+    fun getById(@RequestParam id: UUID): ResponseEntity<CProcess>
+    {
         return serviceProcesses.getById(id)
     }
 
+    @DeleteMapping()
+    fun deleteAll()
+    {
+        serviceProcesses.deleteAll()
+    }
+
     @DeleteMapping(params = ["id"])
-    fun deleteById(@RequestParam id: UUID): ResponseEntity<String> {
+    fun deleteById(@RequestParam id: UUID): ResponseEntity<String>
+    {
         return serviceProcesses.deleteById(id)
     }
 

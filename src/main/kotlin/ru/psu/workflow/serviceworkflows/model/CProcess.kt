@@ -10,16 +10,16 @@ import javax.persistence.*
 @Table(name = "processes")
 class CProcess(
     @Id
-    @GenericGenerator(
-        name                                = "UUIDGenerator",
-        strategy                            = "uuid2"
-    )
-    @GeneratedValue(
-        generator                           = "UUIDGenerator"
-    )
-    @Column(
-        name                                = "id"
-    )
+//    @GenericGenerator(
+//        name                                = "UUIDGenerator",
+//        strategy                            = "uuid2"
+//    )
+//    @GeneratedValue(
+//        generator                           = "UUIDGenerator"
+//    )
+//    @Column(
+//        name                                = "id"
+//    )
     var id: UUID? = null,
 
     @Column
@@ -29,27 +29,14 @@ class CProcess(
 {
     @JsonIgnore
     @OneToMany(mappedBy = "process", cascade = [CascadeType.ALL], orphanRemoval = true, fetch = FetchType.LAZY)
-    var tasks = mutableMapOf<String, CTask>()
+    var tasks = mutableListOf<CTask>()
 
     @JsonIgnore
     @OneToMany(mappedBy = "process", cascade = [CascadeType.ALL], orphanRemoval = true, fetch = FetchType.LAZY)
-    var events = mutableMapOf<String, CEvent>()
+    var events = mutableListOf<CEvent>()
 
     @JsonIgnore
     @OneToMany(mappedBy = "process", cascade = [CascadeType.ALL], orphanRemoval = true, fetch = FetchType.LAZY)
-    var gateways = mutableMapOf<String, CGateway>()
-
-    
-    fun addTask(id: String, task: CTask) {
-        tasks[id] = task
-    }
-
-    fun addGateway(id: String, gateway: CGateway) {
-        gateways[id] = gateway
-    }
-
-    fun addEvent(id: String, event: CEvent) {
-        events[id] = event
-    }
+    var gateways = mutableListOf<CGateway>()
 
 }

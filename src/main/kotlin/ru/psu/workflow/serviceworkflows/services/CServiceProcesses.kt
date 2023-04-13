@@ -23,15 +23,29 @@ class CServiceProcesses(val repositoryProcesses: IRepositoryProcesses): IService
             .orElse(ResponseEntity.notFound().build())
     }
 
-    override fun deleteAll() {
-        repositoryProcesses.deleteAll()
+    override fun deleteAll(): ResponseEntity<String> {
+        if (repositoryProcesses.count() > 0) {
+            repositoryProcesses.deleteAll()
+            return ResponseEntity.ok("Удалены все процессы")
+        }else {
+            return ResponseEntity.notFound().build()
+        }
     }
 
     override fun deleteById(id: UUID): ResponseEntity<String> {
         return repositoryProcesses.findById(id)
             .map { process->
                 repositoryProcesses.delete(process)
-                ResponseEntity.ok("Удален процесс с идентификатором: " + process.id.toString())
+                ResponseEntity.ok("Удален процесс с идентификатором: " + process.id)
+            }
+            .orElse(ResponseEntity.notFound().build())
+    }
+
+    override fun delete(item: CProcess): ResponseEntity<String> {
+        return repositoryProcesses.findById(item.id!!)
+            .map { process->
+                repositoryProcesses.delete(process)
+                ResponseEntity.ok("Удален процесс с идентификатором: " + process.id)
             }
             .orElse(ResponseEntity.notFound().build())
     }

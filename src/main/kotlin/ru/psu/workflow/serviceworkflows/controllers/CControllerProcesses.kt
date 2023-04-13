@@ -38,10 +38,10 @@ class CControllerProcesses
         return serviceProcesses.getById(id)
     }
 
-    @DeleteMapping()
-    fun deleteAll()
+    @DeleteMapping("all")
+    fun deleteAll(): ResponseEntity<String>
     {
-        serviceProcesses.deleteAll()
+        return serviceProcesses.deleteAll()
     }
 
     @DeleteMapping(params = ["id"])
@@ -50,6 +50,9 @@ class CControllerProcesses
         return serviceProcesses.deleteById(id)
     }
 
-
-
+    @DeleteMapping
+    fun delete(@RequestBody item: CProcess): ResponseEntity<String>
+    {
+        return serviceProcesses.delete(item)
+    }
 }

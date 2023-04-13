@@ -12,8 +12,9 @@ interface IServiceProcesses
 
     fun getById(id: UUID): ResponseEntity<CProcess>
 
-    fun deleteAll()
+    fun deleteAll(): ResponseEntity<String>
 
     fun deleteById(id: UUID): ResponseEntity<String>
 
+    fun delete(item: CProcess): ResponseEntity<String>
 }

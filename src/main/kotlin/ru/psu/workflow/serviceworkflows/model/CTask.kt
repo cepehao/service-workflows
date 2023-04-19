@@ -11,3 +11,6 @@ class CTask(
     incomingIdList: ArrayList<String> = arrayListOf<String>(),
     outgoingIdList: ArrayList<String> = arrayListOf<String>()
 ) : CProcessItem(id, name, incomingIdList, outgoingIdList)
+{
+    var fileName: String? = null
+}

@@ -30,4 +30,5 @@ class CProcess(
     @JsonIgnore
     @OneToMany(mappedBy = "process", cascade = [CascadeType.ALL], orphanRemoval = true, fetch = FetchType.LAZY)
     var processItems = mutableListOf<CProcessItem>()
+
 }

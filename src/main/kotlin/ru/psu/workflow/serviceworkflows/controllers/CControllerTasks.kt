@@ -10,7 +10,7 @@ import ru.psu.workflow.serviceworkflows.services.IServiceTasks
 import java.util.*
 
 @RestController
-@RequestMapping("tasks")
+@RequestMapping("v1/tasks")
 class CControllerTasks
 (
     val serviceTasks: IServiceTasks
@@ -26,7 +26,7 @@ class CControllerTasks
     }
 
     @GetMapping("/source")
-    fun getPythonScrit(
+    fun getPythonScript(
         @RequestParam("task_id") taskId: String
     ): String
     {

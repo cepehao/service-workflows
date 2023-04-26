@@ -9,7 +9,7 @@ import ru.psu.workflow.serviceworkflows.services.IServiceProcesses
 import java.util.UUID
 
 @RestController
-@RequestMapping("processes")
+@RequestMapping("v1/processes")
 class CControllerProcesses
 (
     val serviceProcesses: IServiceProcesses,

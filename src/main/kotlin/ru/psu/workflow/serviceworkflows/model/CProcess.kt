@@ -10,16 +10,6 @@ import javax.persistence.*
 @Table(name = "processes")
 class CProcess(
     @Id
-//    @GenericGenerator(
-//        name                                = "UUIDGenerator",
-//        strategy                            = "uuid2"
-//    )
-//    @GeneratedValue(
-//        generator                           = "UUIDGenerator"
-//    )
-//    @Column(
-//        name                                = "id"
-//    )
     var id: UUID? = null,
 
     @Column

@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<semantic:definitions xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:semantic="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:arisebpmn="http://www.softwareag.com/aris/ebpmn" xmlns:i18n="http://www.omg.org/spec/BPMN/non-normative/extensions/i18n/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" xmlns:aris="http://www.softwareag.com/aris/attributes" id="Definitions_ID-e62f30b0-d56c-11ed-7bb9-5254003963f7" name="Создание исполняемого процесса" targetNamespace="http://www.softwareag.com/aris/bpmn2" exporter="ARIS" exporterVersion="10.0.0.1605268" xml:lang="ru">
+    <semantic:process name="Создание исполняемого процесса" id="Process_ID-e62f30b0-d56c-11ed-7bb9-5254003963f7" arisebpmn:type="MT_ENTERPRISE_BPMN_PROCESS">
+        <semantic:laneSet id="LaneSet_ID-e62f30b0-d56c-11ed-7bb9-5254003963f7">
+            <semantic:lane name="Эксперт" id="ID-314d30d1-d56c-11ed-7bb9-5254003963f7" arisebpmn:symbol="ST_ROLE_LANE">
+                <semantic:flowNodeRef>ID-314d30d5-d56c-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+                <semantic:flowNodeRef>ID-314d30d8-d56c-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+                <semantic:flowNodeRef>ID-314d30dc-d56c-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+                <semantic:flowNodeRef>ID-aa3d027b-d56d-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+                <semantic:flowNodeRef>ID-aa3d0280-d56d-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+                <semantic:flowNodeRef>ID-aa3d0283-d56d-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+                <semantic:flowNodeRef>ID-aa3d029c-d56d-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+                <semantic:flowNodeRef>ID-7d880b36-d56e-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+                <semantic:flowNodeRef>ID-7d880b39-d56e-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+                <semantic:flowNodeRef>ID-7d880b4c-d56e-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+            </semantic:lane>
+            <semantic:lane name="Система Workflow" id="ID-314d30d3-d56c-11ed-7bb9-5254003963f7" arisebpmn:symbol="ST_AST_LANE">
+                <semantic:flowNodeRef>ID-314d30e0-d56c-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+                <semantic:flowNodeRef>ID-314d30e4-d56c-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+                <semantic:flowNodeRef>ID-314d30ec-d56c-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+                <semantic:flowNodeRef>ID-314d30ef-d56c-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+                <semantic:flowNodeRef>ID-aa3d0270-d56d-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+                <semantic:flowNodeRef>ID-aa3d0274-d56d-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+                <semantic:flowNodeRef>ID-aa3d028f-d56d-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+                <semantic:flowNodeRef>ID-aa3d0294-d56d-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+                <semantic:flowNodeRef>ID-aa3d02a0-d56d-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+                <semantic:flowNodeRef>ID-7d880b25-d56e-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+                <semantic:flowNodeRef>ID-7d880b28-d56e-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+                <semantic:flowNodeRef>ID-7d880b2b-d56e-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+                <semantic:flowNodeRef>ID-7d880b31-d56e-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+                <semantic:flowNodeRef>ID-7d880b42-d56e-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+                <semantic:flowNodeRef>ID-7d880b46-d56e-11ed-7bb9-5254003963f7</semantic:flowNodeRef>
+            </semantic:lane>
+        </semantic:laneSet>
+        <semantic:startEvent name="Необходимость создания исполняемого процесса возникла" id="ID-314d30d5-d56c-11ed-7bb9-5254003963f7">
+            <semantic:outgoing>ID-314d30e8-d56c-11ed-7bb9-5254003963f7</semantic:outgoing>
+        </semantic:startEvent>
+        <semantic:task name="Создание карточки процесса" id="ID-314d30d8-d56c-11ed-7bb9-5254003963f7">
+            <semantic:incoming>ID-314d30e8-d56c-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:outgoing>ID-314d30e9-d56c-11ed-7bb9-5254003963f7</semantic:outgoing>
+        </semantic:task>
+        <semantic:task name="Загрузка bpmn файла" id="ID-314d30dc-d56c-11ed-7bb9-5254003963f7">
+            <semantic:incoming>ID-aa3d028d-d56d-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:outgoing>ID-314d30eb-d56c-11ed-7bb9-5254003963f7</semantic:outgoing>
+        </semantic:task>
+        <semantic:task name="Сохранение карточки процесса в системе" id="ID-314d30e0-d56c-11ed-7bb9-5254003963f7">
+            <semantic:incoming>ID-314d30e9-d56c-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:outgoing>ID-aa3d0289-d56d-11ed-7bb9-5254003963f7</semantic:outgoing>
+        </semantic:task>
+        <semantic:task name="Проверка bpmn файла" id="ID-314d30e4-d56c-11ed-7bb9-5254003963f7">
+            <semantic:incoming>ID-314d30eb-d56c-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:outgoing>ID-aa3d0277-d56d-11ed-7bb9-5254003963f7</semantic:outgoing>
+        </semantic:task>
+        <semantic:exclusiveGateway name="Gateway" id="ID-314d30ec-d56c-11ed-7bb9-5254003963f7">
+            <semantic:incoming>ID-aa3d0277-d56d-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:outgoing>ID-aa3d0278-d56d-11ed-7bb9-5254003963f7</semantic:outgoing>
+            <semantic:outgoing>ID-aa3d027a-d56d-11ed-7bb9-5254003963f7</semantic:outgoing>
+        </semantic:exclusiveGateway>
+        <semantic:intermediateCatchEvent name="Проблемы в файле обнаружены" id="ID-314d30ef-d56c-11ed-7bb9-5254003963f7">
+            <semantic:incoming>ID-aa3d0278-d56d-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:outgoing>ID-aa3d0279-d56d-11ed-7bb9-5254003963f7</semantic:outgoing>
+        </semantic:intermediateCatchEvent>
+        <semantic:task name="Отображение списка проблем в файле" id="ID-aa3d0270-d56d-11ed-7bb9-5254003963f7">
+            <semantic:incoming>ID-aa3d0279-d56d-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:outgoing>ID-aa3d027f-d56d-11ed-7bb9-5254003963f7</semantic:outgoing>
+        </semantic:task>
+        <semantic:intermediateCatchEvent name="Проблемы в файле не обнаружены" id="ID-aa3d0274-d56d-11ed-7bb9-5254003963f7">
+            <semantic:incoming>ID-aa3d027a-d56d-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:outgoing>ID-aa3d029b-d56d-11ed-7bb9-5254003963f7</semantic:outgoing>
+        </semantic:intermediateCatchEvent>
+        <semantic:task name="Корректировка файла bpmn" id="ID-aa3d027b-d56d-11ed-7bb9-5254003963f7">
+            <semantic:incoming>ID-aa3d027f-d56d-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:outgoing>ID-aa3d028e-d56d-11ed-7bb9-5254003963f7</semantic:outgoing>
+        </semantic:task>
+        <semantic:intermediateCatchEvent name="Требуется загрузка файла bpmn" id="ID-aa3d0280-d56d-11ed-7bb9-5254003963f7">
+            <semantic:incoming>ID-aa3d028a-d56d-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:outgoing>ID-aa3d028d-d56d-11ed-7bb9-5254003963f7</semantic:outgoing>
+        </semantic:intermediateCatchEvent>
+        <semantic:exclusiveGateway name="Gateway" id="ID-aa3d0283-d56d-11ed-7bb9-5254003963f7">
+            <semantic:incoming>ID-aa3d0289-d56d-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:incoming>ID-aa3d028e-d56d-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:outgoing>ID-aa3d028a-d56d-11ed-7bb9-5254003963f7</semantic:outgoing>
+        </semantic:exclusiveGateway>
+        <semantic:task name="Отображение схемы процесса" id="ID-aa3d028f-d56d-11ed-7bb9-5254003963f7">
+            <semantic:incoming>ID-aa3d0299-d56d-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:outgoing>ID-7d880b3e-d56e-11ed-7bb9-5254003963f7</semantic:outgoing>
+        </semantic:task>
+        <semantic:task name="Сохранение задач в СУБД" id="ID-aa3d0294-d56d-11ed-7bb9-5254003963f7">
+            <semantic:incoming>ID-aa3d029b-d56d-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:outgoing>ID-aa3d0299-d56d-11ed-7bb9-5254003963f7</semantic:outgoing>
+        </semantic:task>
+        <semantic:task name="Заполнение кода для операций" id="ID-aa3d029c-d56d-11ed-7bb9-5254003963f7">
+            <semantic:incoming>ID-7d880b41-d56e-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:outgoing>ID-7d880b24-d56e-11ed-7bb9-5254003963f7</semantic:outgoing>
+        </semantic:task>
+        <semantic:task name="Проверка кода операций" id="ID-aa3d02a0-d56d-11ed-7bb9-5254003963f7">
+            <semantic:incoming>ID-7d880b24-d56e-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:outgoing>ID-7d880b2e-d56e-11ed-7bb9-5254003963f7</semantic:outgoing>
+        </semantic:task>
+        <semantic:exclusiveGateway name="Gateway" id="ID-7d880b25-d56e-11ed-7bb9-5254003963f7">
+            <semantic:incoming>ID-7d880b2e-d56e-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:outgoing>ID-7d880b2f-d56e-11ed-7bb9-5254003963f7</semantic:outgoing>
+            <semantic:outgoing>ID-7d880b30-d56e-11ed-7bb9-5254003963f7</semantic:outgoing>
+        </semantic:exclusiveGateway>
+        <semantic:intermediateCatchEvent name="Проблемы в коде обнаружены" id="ID-7d880b28-d56e-11ed-7bb9-5254003963f7">
+            <semantic:incoming>ID-7d880b2f-d56e-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:outgoing>ID-7d880b35-d56e-11ed-7bb9-5254003963f7</semantic:outgoing>
+        </semantic:intermediateCatchEvent>
+        <semantic:intermediateCatchEvent name="Проблемы в коде не обнаружены" id="ID-7d880b2b-d56e-11ed-7bb9-5254003963f7">
+            <semantic:incoming>ID-7d880b30-d56e-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:outgoing>ID-7d880b4a-d56e-11ed-7bb9-5254003963f7</semantic:outgoing>
+        </semantic:intermediateCatchEvent>
+        <semantic:task name="Отображение списка проблем в коде" id="ID-7d880b31-d56e-11ed-7bb9-5254003963f7">
+            <semantic:incoming>ID-7d880b35-d56e-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:outgoing>ID-7d880b3f-d56e-11ed-7bb9-5254003963f7</semantic:outgoing>
+        </semantic:task>
+        <semantic:intermediateCatchEvent name="Необходимость редактирования кода операций возникла" id="ID-7d880b36-d56e-11ed-7bb9-5254003963f7">
+            <semantic:incoming>ID-7d880b40-d56e-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:outgoing>ID-7d880b41-d56e-11ed-7bb9-5254003963f7</semantic:outgoing>
+        </semantic:intermediateCatchEvent>
+        <semantic:exclusiveGateway name="Gateway" id="ID-7d880b39-d56e-11ed-7bb9-5254003963f7">
+            <semantic:incoming>ID-7d880b3e-d56e-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:incoming>ID-7d880b3f-d56e-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:outgoing>ID-7d880b40-d56e-11ed-7bb9-5254003963f7</semantic:outgoing>
+        </semantic:exclusiveGateway>
+        <semantic:task name="Информирование о корректном завершении проверок" id="ID-7d880b42-d56e-11ed-7bb9-5254003963f7">
+            <semantic:incoming>ID-7d880b4b-d56e-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:outgoing>ID-7d880b4f-d56e-11ed-7bb9-5254003963f7</semantic:outgoing>
+        </semantic:task>
+        <semantic:task name="Сохранение кода операций в СУБД" id="ID-7d880b46-d56e-11ed-7bb9-5254003963f7">
+            <semantic:incoming>ID-7d880b4a-d56e-11ed-7bb9-5254003963f7</semantic:incoming>
+            <semantic:outgoing>ID-7d880b4b-d56e-11ed-7bb9-5254003963f7</semantic:outgoing>
+        </semantic:task>
+        <semantic:endEvent name="Создание исполняемого процесса завершено" id="ID-7d880b4c-d56e-11ed-7bb9-5254003963f7">
+            <semantic:incoming>ID-7d880b4f-d56e-11ed-7bb9-5254003963f7</semantic:incoming>
+        </semantic:endEvent>
+        <semantic:sequenceFlow sourceRef="ID-314d30d5-d56c-11ed-7bb9-5254003963f7" targetRef="ID-314d30d8-d56c-11ed-7bb9-5254003963f7" id="ID-314d30e8-d56c-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-314d30d8-d56c-11ed-7bb9-5254003963f7" targetRef="ID-314d30e0-d56c-11ed-7bb9-5254003963f7" id="ID-314d30e9-d56c-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-314d30dc-d56c-11ed-7bb9-5254003963f7" targetRef="ID-314d30e4-d56c-11ed-7bb9-5254003963f7" id="ID-314d30eb-d56c-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-314d30e4-d56c-11ed-7bb9-5254003963f7" targetRef="ID-314d30ec-d56c-11ed-7bb9-5254003963f7" id="ID-aa3d0277-d56d-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-314d30ec-d56c-11ed-7bb9-5254003963f7" targetRef="ID-314d30ef-d56c-11ed-7bb9-5254003963f7" id="ID-aa3d0278-d56d-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-314d30ef-d56c-11ed-7bb9-5254003963f7" targetRef="ID-aa3d0270-d56d-11ed-7bb9-5254003963f7" id="ID-aa3d0279-d56d-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-314d30ec-d56c-11ed-7bb9-5254003963f7" targetRef="ID-aa3d0274-d56d-11ed-7bb9-5254003963f7" id="ID-aa3d027a-d56d-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-aa3d0270-d56d-11ed-7bb9-5254003963f7" targetRef="ID-aa3d027b-d56d-11ed-7bb9-5254003963f7" id="ID-aa3d027f-d56d-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-314d30e0-d56c-11ed-7bb9-5254003963f7" targetRef="ID-aa3d0283-d56d-11ed-7bb9-5254003963f7" id="ID-aa3d0289-d56d-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-aa3d0283-d56d-11ed-7bb9-5254003963f7" targetRef="ID-aa3d0280-d56d-11ed-7bb9-5254003963f7" id="ID-aa3d028a-d56d-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-aa3d0280-d56d-11ed-7bb9-5254003963f7" targetRef="ID-314d30dc-d56c-11ed-7bb9-5254003963f7" id="ID-aa3d028d-d56d-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-aa3d027b-d56d-11ed-7bb9-5254003963f7" targetRef="ID-aa3d0283-d56d-11ed-7bb9-5254003963f7" id="ID-aa3d028e-d56d-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-aa3d0274-d56d-11ed-7bb9-5254003963f7" targetRef="ID-aa3d0294-d56d-11ed-7bb9-5254003963f7" id="ID-aa3d029b-d56d-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-aa3d0294-d56d-11ed-7bb9-5254003963f7" targetRef="ID-aa3d028f-d56d-11ed-7bb9-5254003963f7" id="ID-aa3d0299-d56d-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-aa3d029c-d56d-11ed-7bb9-5254003963f7" targetRef="ID-aa3d02a0-d56d-11ed-7bb9-5254003963f7" id="ID-7d880b24-d56e-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-aa3d02a0-d56d-11ed-7bb9-5254003963f7" targetRef="ID-7d880b25-d56e-11ed-7bb9-5254003963f7" id="ID-7d880b2e-d56e-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-7d880b25-d56e-11ed-7bb9-5254003963f7" targetRef="ID-7d880b28-d56e-11ed-7bb9-5254003963f7" id="ID-7d880b2f-d56e-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-7d880b25-d56e-11ed-7bb9-5254003963f7" targetRef="ID-7d880b2b-d56e-11ed-7bb9-5254003963f7" id="ID-7d880b30-d56e-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-7d880b28-d56e-11ed-7bb9-5254003963f7" targetRef="ID-7d880b31-d56e-11ed-7bb9-5254003963f7" id="ID-7d880b35-d56e-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-aa3d028f-d56d-11ed-7bb9-5254003963f7" targetRef="ID-7d880b39-d56e-11ed-7bb9-5254003963f7" id="ID-7d880b3e-d56e-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-7d880b31-d56e-11ed-7bb9-5254003963f7" targetRef="ID-7d880b39-d56e-11ed-7bb9-5254003963f7" id="ID-7d880b3f-d56e-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-7d880b39-d56e-11ed-7bb9-5254003963f7" targetRef="ID-7d880b36-d56e-11ed-7bb9-5254003963f7" id="ID-7d880b40-d56e-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-7d880b36-d56e-11ed-7bb9-5254003963f7" targetRef="ID-aa3d029c-d56d-11ed-7bb9-5254003963f7" id="ID-7d880b41-d56e-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-7d880b2b-d56e-11ed-7bb9-5254003963f7" targetRef="ID-7d880b46-d56e-11ed-7bb9-5254003963f7" id="ID-7d880b4a-d56e-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-7d880b46-d56e-11ed-7bb9-5254003963f7" targetRef="ID-7d880b42-d56e-11ed-7bb9-5254003963f7" id="ID-7d880b4b-d56e-11ed-7bb9-5254003963f7"/>
+        <semantic:sequenceFlow sourceRef="ID-7d880b42-d56e-11ed-7bb9-5254003963f7" targetRef="ID-7d880b4c-d56e-11ed-7bb9-5254003963f7" id="ID-7d880b4f-d56e-11ed-7bb9-5254003963f7"/>
+    </semantic:process>
+    <bpmndi:BPMNDiagram name="Создание исполняемого процесса" resolution="72.0" id="ID-e62f30b0-d56c-11ed-7bb9-5254003963f7">
+        <bpmndi:BPMNPlane bpmnElement="Process_ID-e62f30b0-d56c-11ed-7bb9-5254003963f7" id="Plane_ID-e62f30b0-d56c-11ed-7bb9-5254003963f7">
+            <bpmndi:BPMNShape bpmnElement="ID-314d30d1-d56c-11ed-7bb9-5254003963f7" isHorizontal="true" id="Shape_ID-314d30d1-d56c-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#5e5e5e">
+                <dc:Bounds x="42.52" y="85.04" width="1502.36" height="141.73"/>
+                <bpmndi:BPMNLabel labelStyle="ArisFontStyleSheet_0_d7b815f4-04df-4971-8f01-03fe21c67159" color:color="#000000">
+                    <dc:Bounds x="42.52" y="85.04" width="42.52" height="141.73"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="ID-314d30d3-d56c-11ed-7bb9-5254003963f7" isHorizontal="true" id="Shape_ID-314d30d3-d56c-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#5e5e5e">
+                <dc:Bounds x="42.52" y="226.77" width="1502.36" height="283.46"/>
+                <bpmndi:BPMNLabel labelStyle="ArisFontStyleSheet_0_d7b815f4-04df-4971-8f01-03fe21c67159" color:color="#000000">
+                    <dc:Bounds x="42.52" y="226.77" width="42.52" height="283.46"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="ID-314d30d5-d56c-11ed-7bb9-5254003963f7" id="Shape_ID-314d30d5-d56c-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#72ab16">
+                <dc:Bounds x="110.27" y="138.61" width="34.58" height="34.58"/>
+                <bpmndi:BPMNLabel labelStyle="ArisFontStyleSheet_0_d7b815f4-04df-4971-8f01-03fe21c67159" color:color="#000000">
+                    <dc:Bounds x="70.87" y="183.69" width="113.39" height="29.76"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="ID-314d30d8-d56c-11ed-7bb9-5254003963f7" id="Shape_ID-314d30d8-d56c-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#00a2ce">
+                <dc:Bounds x="188.79" y="123.87" width="104.31" height="64.06"/>
+                <bpmndi:BPMNLabel labelStyle="ArisFontStyleSheet_0_d7b815f4-04df-4971-8f01-03fe21c67159" color:color="#000000">
+                    <dc:Bounds x="198.14" y="145.98" width="85.89" height="19.84"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="ID-314d30dc-d56c-11ed-7bb9-5254003963f7" id="Shape_ID-314d30dc-d56c-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#00a2ce">
+                <dc:Bounds x="451.56" y="123.87" width="104.31" height="64.06"/>
+                <bpmndi:BPMNLabel labelStyle="ArisFontStyleSheet_0_d7b815f4-04df-4971-8f01-03fe21c67159" color:color="#000000">
+                    <dc:Bounds x="454.68" y="151.09" width="98.36" height="9.92"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="ID-314d30e0-d56c-11ed-7bb9-5254003963f7" id="Shape_ID-314d30e0-d56c-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#00a2ce">
+                <dc:Bounds x="188.79" y="251.43" width="104.31" height="64.06"/>
+                <bpmndi:BPMNLabel labelStyle="ArisFontStyleSheet_0_d7b815f4-04df-4971-8f01-03fe21c67159" color:color="#000000">
+                    <dc:Bounds x="193.04" y="273.54" width="96.09" height="19.84"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="ID-314d30e4-d56c-11ed-7bb9-5254003963f7" id="Shape_ID-314d30e4-d56c-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#00a2ce">
+                <dc:Bounds x="451.56" y="251.43" width="104.31" height="64.06"/>
+                <bpmndi:BPMNLabel labelStyle="ArisFontStyleSheet_0_d7b815f4-04df-4971-8f01-03fe21c67159" color:color="#000000">
+                    <dc:Bounds x="468.85" y="273.54" width="69.73" height="19.84"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="ID-314d30e8-d56c-11ed-7bb9-5254003963f7" id="Edge_ID-314d30e8-d56c-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="144.85" y="155.91"/>
+                <di:waypoint x="188.79" y="155.91"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="ID-314d30e9-d56c-11ed-7bb9-5254003963f7" id="Edge_ID-314d30e9-d56c-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="240.94" y="187.94"/>
+                <di:waypoint x="240.94" y="251.43"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="ID-314d30eb-d56c-11ed-7bb9-5254003963f7" id="Edge_ID-314d30eb-d56c-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="503.72" y="187.94"/>
+                <di:waypoint x="503.72" y="251.43"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="ID-314d30ec-d56c-11ed-7bb9-5254003963f7" isMarkerVisible="true" id="Shape_ID-314d30ec-d56c-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#5e5e5e">
+                <dc:Bounds x="584.22" y="259.37" width="48.19" height="48.19"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="ID-314d30ef-d56c-11ed-7bb9-5254003963f7" id="Shape_ID-314d30ef-d56c-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#da7400">
+                <dc:Bounds x="660.76" y="266.17" width="34.58" height="34.58"/>
+                <bpmndi:BPMNLabel labelStyle="ArisFontStyleSheet_0_d7b815f4-04df-4971-8f01-03fe21c67159" color:color="#000000">
+                    <dc:Bounds x="605.2" y="303.59" width="145.98" height="9.92"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="ID-aa3d0270-d56d-11ed-7bb9-5254003963f7" id="Shape_ID-aa3d0270-d56d-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#00a2ce">
+                <dc:Bounds x="739.28" y="251.43" width="104.31" height="64.06"/>
+                <bpmndi:BPMNLabel labelStyle="ArisFontStyleSheet_0_d7b815f4-04df-4971-8f01-03fe21c67159" color:color="#000000">
+                    <dc:Bounds x="744.38" y="273.54" width="94.39" height="19.84"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="ID-aa3d0274-d56d-11ed-7bb9-5254003963f7" id="Shape_ID-aa3d0274-d56d-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#da7400">
+                <dc:Bounds x="660.76" y="343.84" width="34.58" height="34.58"/>
+                <bpmndi:BPMNLabel labelStyle="ArisFontStyleSheet_0_d7b815f4-04df-4971-8f01-03fe21c67159" color:color="#000000">
+                    <dc:Bounds x="598.39" y="381.26" width="159.31" height="9.92"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="ID-aa3d0277-d56d-11ed-7bb9-5254003963f7" id="Edge_ID-aa3d0277-d56d-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="555.87" y="283.46"/>
+                <di:waypoint x="584.22" y="283.46"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="ID-aa3d0278-d56d-11ed-7bb9-5254003963f7" id="Edge_ID-aa3d0278-d56d-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="632.41" y="283.46"/>
+                <di:waypoint x="660.76" y="283.46"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="ID-aa3d0279-d56d-11ed-7bb9-5254003963f7" id="Edge_ID-aa3d0279-d56d-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="695.34" y="283.46"/>
+                <di:waypoint x="739.28" y="283.46"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="ID-aa3d027a-d56d-11ed-7bb9-5254003963f7" id="Edge_ID-aa3d027a-d56d-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="608.31" y="307.56"/>
+                <di:waypoint x="608.31" y="361.13"/>
+                <di:waypoint x="660.76" y="361.13"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="ID-aa3d027b-d56d-11ed-7bb9-5254003963f7" id="Shape_ID-aa3d027b-d56d-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#00a2ce">
+                <dc:Bounds x="739.28" y="123.87" width="104.31" height="64.06"/>
+                <bpmndi:BPMNLabel labelStyle="ArisFontStyleSheet_0_d7b815f4-04df-4971-8f01-03fe21c67159" color:color="#000000">
+                    <dc:Bounds x="742.39" y="144.85" width="98.36" height="22.39"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="ID-aa3d027f-d56d-11ed-7bb9-5254003963f7" id="Edge_ID-aa3d027f-d56d-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="791.43" y="251.43"/>
+                <di:waypoint x="791.43" y="187.94"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="ID-aa3d0280-d56d-11ed-7bb9-5254003963f7" id="Shape_ID-aa3d0280-d56d-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#da7400">
+                <dc:Bounds x="388.63" y="138.61" width="34.58" height="34.58"/>
+                <bpmndi:BPMNLabel labelStyle="ArisFontStyleSheet_0_d7b815f4-04df-4971-8f01-03fe21c67159" color:color="#000000">
+                    <dc:Bounds x="332.79" y="176.03" width="146.55" height="9.92"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="ID-aa3d0283-d56d-11ed-7bb9-5254003963f7" isMarkerVisible="true" id="Shape_ID-aa3d0283-d56d-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#5e5e5e">
+                <dc:Bounds x="312.09" y="131.81" width="48.19" height="48.19"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="ID-aa3d0289-d56d-11ed-7bb9-5254003963f7" id="Edge_ID-aa3d0289-d56d-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="293.1" y="283.46"/>
+                <di:waypoint x="335.91" y="283.46"/>
+                <di:waypoint x="335.91" y="179.72"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="ID-aa3d028a-d56d-11ed-7bb9-5254003963f7" id="Edge_ID-aa3d028a-d56d-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="360.28" y="155.91"/>
+                <di:waypoint x="388.63" y="155.91"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="ID-aa3d028d-d56d-11ed-7bb9-5254003963f7" id="Edge_ID-aa3d028d-d56d-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="423.21" y="155.91"/>
+                <di:waypoint x="451.56" y="155.91"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="ID-aa3d028e-d56d-11ed-7bb9-5254003963f7" id="Edge_ID-aa3d028e-d56d-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="791.43" y="123.87"/>
+                <di:waypoint x="791.43" y="109.7"/>
+                <di:waypoint x="336.19" y="109.7"/>
+                <di:waypoint x="336.19" y="131.81"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="ID-aa3d028f-d56d-11ed-7bb9-5254003963f7" id="Shape_ID-aa3d028f-d56d-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#00a2ce">
+                <dc:Bounds x="871.94" y="251.43" width="104.31" height="64.06"/>
+                <bpmndi:BPMNLabel labelStyle="ArisFontStyleSheet_0_d7b815f4-04df-4971-8f01-03fe21c67159" color:color="#000000">
+                    <dc:Bounds x="877.89" y="273.54" width="92.41" height="19.84"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="ID-aa3d0294-d56d-11ed-7bb9-5254003963f7" id="Shape_ID-aa3d0294-d56d-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#00a2ce">
+                <dc:Bounds x="739.28" y="329.1" width="104.31" height="64.06"/>
+                <bpmndi:BPMNLabel labelStyle="ArisFontStyleSheet_0_d7b815f4-04df-4971-8f01-03fe21c67159" color:color="#000000">
+                    <dc:Bounds x="746.36" y="351.21" width="90.14" height="19.84"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="ID-aa3d029b-d56d-11ed-7bb9-5254003963f7" id="Edge_ID-aa3d029b-d56d-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="695.34" y="361.13"/>
+                <di:waypoint x="739.28" y="361.13"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="ID-aa3d0299-d56d-11ed-7bb9-5254003963f7" id="Edge_ID-aa3d0299-d56d-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="843.59" y="361.13"/>
+                <di:waypoint x="924.09" y="361.13"/>
+                <di:waypoint x="924.09" y="315.5"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="ID-aa3d029c-d56d-11ed-7bb9-5254003963f7" id="Shape_ID-aa3d029c-d56d-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#00a2ce">
+                <dc:Bounds x="1004.6" y="123.87" width="104.31" height="64.06"/>
+                <bpmndi:BPMNLabel labelStyle="ArisFontStyleSheet_0_d7b815f4-04df-4971-8f01-03fe21c67159" color:color="#000000">
+                    <dc:Bounds x="1008.57" y="145.98" width="96.38" height="19.84"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="ID-aa3d02a0-d56d-11ed-7bb9-5254003963f7" id="Shape_ID-aa3d02a0-d56d-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#00a2ce">
+                <dc:Bounds x="1004.6" y="251.43" width="104.31" height="64.06"/>
+                <bpmndi:BPMNLabel labelStyle="ArisFontStyleSheet_0_d7b815f4-04df-4971-8f01-03fe21c67159" color:color="#000000">
+                    <dc:Bounds x="1024.16" y="273.54" width="65.48" height="19.84"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="ID-7d880b24-d56e-11ed-7bb9-5254003963f7" id="Edge_ID-7d880b24-d56e-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="1056.76" y="187.94"/>
+                <di:waypoint x="1056.76" y="251.43"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="ID-7d880b25-d56e-11ed-7bb9-5254003963f7" isMarkerVisible="true" id="Shape_ID-7d880b25-d56e-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#5e5e5e">
+                <dc:Bounds x="1123.94" y="259.37" width="48.19" height="48.19"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="ID-7d880b28-d56e-11ed-7bb9-5254003963f7" id="Shape_ID-7d880b28-d56e-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#da7400">
+                <dc:Bounds x="1187.15" y="266.17" width="34.58" height="34.58"/>
+                <bpmndi:BPMNLabel labelStyle="ArisFontStyleSheet_0_d7b815f4-04df-4971-8f01-03fe21c67159" color:color="#000000">
+                    <dc:Bounds x="1136.13" y="303.59" width="136.63" height="9.92"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="ID-7d880b2b-d56e-11ed-7bb9-5254003963f7" id="Shape_ID-7d880b2b-d56e-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#da7400">
+                <dc:Bounds x="1187.15" y="343.84" width="34.58" height="34.58"/>
+                <bpmndi:BPMNLabel labelStyle="ArisFontStyleSheet_0_d7b815f4-04df-4971-8f01-03fe21c67159" color:color="#000000">
+                    <dc:Bounds x="1129.61" y="381.26" width="149.95" height="9.92"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="ID-7d880b2e-d56e-11ed-7bb9-5254003963f7" id="Edge_ID-7d880b2e-d56e-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="1108.91" y="283.46"/>
+                <di:waypoint x="1123.94" y="283.46"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="ID-7d880b2f-d56e-11ed-7bb9-5254003963f7" id="Edge_ID-7d880b2f-d56e-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="1172.13" y="283.46"/>
+                <di:waypoint x="1187.15" y="283.46"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="ID-7d880b30-d56e-11ed-7bb9-5254003963f7" id="Edge_ID-7d880b30-d56e-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="1148.03" y="307.56"/>
+                <di:waypoint x="1148.03" y="361.13"/>
+                <di:waypoint x="1187.15" y="361.13"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="ID-7d880b31-d56e-11ed-7bb9-5254003963f7" id="Shape_ID-7d880b31-d56e-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#00a2ce">
+                <dc:Bounds x="1265.67" y="251.43" width="104.31" height="64.06"/>
+                <bpmndi:BPMNLabel labelStyle="ArisFontStyleSheet_0_d7b815f4-04df-4971-8f01-03fe21c67159" color:color="#000000">
+                    <dc:Bounds x="1270.77" y="273.54" width="94.39" height="19.84"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="ID-7d880b35-d56e-11ed-7bb9-5254003963f7" id="Edge_ID-7d880b35-d56e-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="1221.73" y="283.46"/>
+                <di:waypoint x="1265.67" y="283.46"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="ID-7d880b36-d56e-11ed-7bb9-5254003963f7" id="Shape_ID-7d880b36-d56e-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#da7400">
+                <dc:Bounds x="954.99" y="138.61" width="34.58" height="34.58"/>
+                <bpmndi:BPMNLabel labelStyle="ArisFontStyleSheet_0_d7b815f4-04df-4971-8f01-03fe21c67159" color:color="#000000">
+                    <dc:Bounds x="843.02" y="176.03" width="258.8" height="9.92"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="ID-7d880b39-d56e-11ed-7bb9-5254003963f7" isMarkerVisible="true" id="Shape_ID-7d880b39-d56e-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#5e5e5e">
+                <dc:Bounds x="900.0" y="131.81" width="48.19" height="48.19"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="ID-7d880b3e-d56e-11ed-7bb9-5254003963f7" id="Edge_ID-7d880b3e-d56e-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="924.09" y="251.43"/>
+                <di:waypoint x="924.09" y="180.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="ID-7d880b3f-d56e-11ed-7bb9-5254003963f7" id="Edge_ID-7d880b3f-d56e-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="1317.83" y="251.43"/>
+                <di:waypoint x="1317.83" y="117.64"/>
+                <di:waypoint x="924.09" y="117.64"/>
+                <di:waypoint x="924.09" y="131.81"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="ID-7d880b40-d56e-11ed-7bb9-5254003963f7" id="Edge_ID-7d880b40-d56e-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="948.19" y="155.91"/>
+                <di:waypoint x="954.99" y="155.91"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="ID-7d880b41-d56e-11ed-7bb9-5254003963f7" id="Edge_ID-7d880b41-d56e-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="989.57" y="155.91"/>
+                <di:waypoint x="1004.6" y="155.91"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="ID-7d880b42-d56e-11ed-7bb9-5254003963f7" id="Shape_ID-7d880b42-d56e-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#00a2ce">
+                <dc:Bounds x="1398.33" y="251.43" width="104.31" height="64.06"/>
+                <bpmndi:BPMNLabel labelStyle="ArisFontStyleSheet_0_d7b815f4-04df-4971-8f01-03fe21c67159" color:color="#000000">
+                    <dc:Bounds x="1401.17" y="268.72" width="98.65" height="29.76"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="ID-7d880b46-d56e-11ed-7bb9-5254003963f7" id="Shape_ID-7d880b46-d56e-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#00a2ce">
+                <dc:Bounds x="1265.67" y="329.1" width="104.31" height="64.06"/>
+                <bpmndi:BPMNLabel labelStyle="ArisFontStyleSheet_0_d7b815f4-04df-4971-8f01-03fe21c67159" color:color="#000000">
+                    <dc:Bounds x="1277.86" y="351.21" width="80.22" height="19.84"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="ID-7d880b4a-d56e-11ed-7bb9-5254003963f7" id="Edge_ID-7d880b4a-d56e-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="1221.73" y="361.13"/>
+                <di:waypoint x="1265.67" y="361.13"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="ID-7d880b4b-d56e-11ed-7bb9-5254003963f7" id="Edge_ID-7d880b4b-d56e-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="1369.98" y="361.13"/>
+                <di:waypoint x="1450.49" y="361.13"/>
+                <di:waypoint x="1450.49" y="315.5"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape bpmnElement="ID-7d880b4c-d56e-11ed-7bb9-5254003963f7" id="Shape_ID-7d880b4c-d56e-11ed-7bb9-5254003963f7" color:background-color="#ffffff" color:border-color="#fd6767">
+                <dc:Bounds x="1434.05" y="139.46" width="32.88" height="32.88"/>
+                <bpmndi:BPMNLabel labelStyle="ArisFontStyleSheet_0_d7b815f4-04df-4971-8f01-03fe21c67159" color:color="#000000">
+                    <dc:Bounds x="1347.31" y="175.18" width="206.36" height="9.92"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="ID-7d880b4f-d56e-11ed-7bb9-5254003963f7" id="Edge_ID-7d880b4f-d56e-11ed-7bb9-5254003963f7" color:border-color="#666666">
+                <di:waypoint x="1450.49" y="251.43"/>
+                <di:waypoint x="1450.49" y="172.35"/>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+        <bpmndi:BPMNLabelStyle id="ArisFontStyleSheet_0_d7b815f4-04df-4971-8f01-03fe21c67159">
+            <dc:Font name="Dialog" size="11.0" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+        </bpmndi:BPMNLabelStyle>
+    </bpmndi:BPMNDiagram>
+</semantic:definitions>
